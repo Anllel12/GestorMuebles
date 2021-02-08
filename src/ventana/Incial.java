@@ -20,7 +20,7 @@ public class Incial extends javax.swing.JFrame {
      */
     public Incial() {
         initComponents();
-        dataBase.conect('muebles');
+        dataBase.conect("muebles");
     }
 
     /**

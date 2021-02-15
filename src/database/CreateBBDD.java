@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase creada para manejar la creacion de la Base de Datos
+ * de forma automatica cuando se enciende el programa
  */
 package database;
 
@@ -20,25 +19,35 @@ public class CreateBBDD {
     
     public static Connection con = null;
     
-    public static void conect(String name){ // me conecto a la base de datos 
+    public static void connect(String name){ // conexion a la base de datos.
         
         String user= "root";
         String pass = "";
         
         try {          
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=UTC", user, pass);  // Creamos la Base de Datos.
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=UTC", user, pass);  // conexion a la URL.
             
-            createDataBase(name); // creao la base
+            createDataBase(name); // creao la base.
             
-            createTables(); // creo las tablas
+            createTables(); // creo las tablas.
             
-            insertTables();
+            insertTables(); // inserto datos.
            
         } catch (SQLException ex) {
             Logger.getLogger(CreateBBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
+    
+     public static void disconnect() { // desconexion de la base de datos.
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+
+        }
+    }
+
     
      private static void createDataBase(String name) throws SQLException { // creo la BBDD
         Statement stmt = con.createStatement();
@@ -52,10 +61,10 @@ public class CreateBBDD {
         stmt.close();
     }
      
-     private static void createTables() throws SQLException {  // Esto contiene toda la creación de tablas.
+     private static void createTables() throws SQLException {  // contiene toda la creación de tablas.
         Statement stmt = con.createStatement();
 
-        String muebleTable = "CREATE TABLE IF NOT EXISTS `mueble` (\n" +
+        String muebleTable = "CREATE TABLE IF NOT EXISTS `mueble` (\n" + // creación de Mueble.
             "`modelo` INT(10) NOT NULL,\n" +
             "`nombre` VARCHAR(100) NOT NULL,\n" +
             "`precio` INT(10) NOT NULL,\n" +
@@ -65,7 +74,7 @@ public class CreateBBDD {
         
         stmt.executeUpdate(muebleTable);
         
-        String tamañoTable = "CREATE TABLE IF NOT EXISTS `tamano` (\n" +
+        String tamañoTable = "CREATE TABLE IF NOT EXISTS `tamano` (\n" + // creación de Tamaño.
         "`id` INT(10) AUTO_INCREMENT,\n" +
         "`ancho` INT(10),\n" +
         "`fondo` INT(10),\n" +
@@ -77,7 +86,7 @@ public class CreateBBDD {
         
         stmt.executeUpdate(tamañoTable);
         
-        String materialesTable = "CREATE TABLE IF NOT EXISTS `materiales` (\n" +
+        String materialesTable = "CREATE TABLE IF NOT EXISTS `materiales` (\n" + // creación de Materiales.
         "`id` INT(10) AUTO_INCREMENT,\n" +
         "`principal` VARCHAR(100),\n" +
         "`secundario` VARCHAR(100),\n" +
@@ -90,24 +99,24 @@ public class CreateBBDD {
         stmt.close();
     }
      
-     private static void insertTables() throws SQLException {  // insertamos valores a la tabla Album.
+     private static void insertTables() throws SQLException {  // insertamos valores a las diferentes tablas.
         Statement stmt = con.createStatement();
 
-        String muebleTable = "INSERT IGNORE INTO `mueble` VALUES \n" +
+        String muebleTable = "INSERT IGNORE INTO `mueble` VALUES \n" + // inserto de datos de Mueble.
         "('00278578', 'HYLLIS', '10', '1'),\n" +
         "('60333850', 'BROR', '99', '1'),\n" +
         "('30409295', 'KOLBJÖRN', '69', '1');";
         
         stmt.executeUpdate(muebleTable);
         
-        String tamañoTable = "INSERT IGNORE INTO `tamano` VALUES \n" +
+        String tamañoTable = "INSERT IGNORE INTO `tamano` VALUES \n" + // inserto de datos de Tamaño.
         "(0, '60', '27', '140', '25', '00278578'),\n" +
         "(0, '85', '55', '88', '50', '60333850'),\n" +
         "(0, '80', '35', '81', '55', '30409295');";
         
         stmt.executeUpdate(tamañoTable);
         
-        String materialesTable = "INSERT IGNORE INTO `materiales` VALUES \n" +
+        String materialesTable = "INSERT IGNORE INTO `materiales` VALUES \n" + // inserto de datos de Materiales.
         "(0, 'Acero galvanizado', 'Plástico amídico', '00278578'),\n" +
         "(0, 'Acero', 'Contrachapado de pino', '60333850'),\n" +
         "(0, 'Acero galvanizado', 'Revestimiento en polvo de poliéster', '30409295');";

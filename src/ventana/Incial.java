@@ -16,6 +16,8 @@ public class Incial extends javax.swing.JFrame {
     Query query = new Query();
     
     FindFitment findFitment = new FindFitment();
+    FindSize findSize = new FindSize();
+    FindMaterial findMaterial = new FindMaterial();
 
     /**
      * Creates new form Incial
@@ -61,6 +63,7 @@ public class Incial extends javax.swing.JFrame {
         jButtonBuscarMateriales = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor de Muebles");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -161,6 +164,11 @@ public class Incial extends javax.swing.JFrame {
         jButtonEditarTamano.setText("Editar");
 
         jButtonBuscarTamano.setText("Buscar");
+        jButtonBuscarTamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarTamanoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
@@ -223,6 +231,11 @@ public class Incial extends javax.swing.JFrame {
         jButtonEditarMateriales.setText("Editar");
 
         jButtonBuscarMateriales.setText("Buscar");
+        jButtonBuscarMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarMaterialesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
@@ -287,6 +300,14 @@ public class Incial extends javax.swing.JFrame {
     private void jButtonBuscarMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMueblesActionPerformed
         findFitment.setVisible(true);
     }//GEN-LAST:event_jButtonBuscarMueblesActionPerformed
+
+    private void jButtonBuscarTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarTamanoActionPerformed
+        findSize.setVisible(true);
+    }//GEN-LAST:event_jButtonBuscarTamanoActionPerformed
+
+    private void jButtonBuscarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMaterialesActionPerformed
+        findMaterial.setVisible(true);
+    }//GEN-LAST:event_jButtonBuscarMaterialesActionPerformed
 
     /**
      * @param args the command line arguments

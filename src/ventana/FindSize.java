@@ -11,14 +11,14 @@ import database.Query;
  *
  * @author angel
  */
-public class FindFitment extends javax.swing.JFrame {
+public class FindSize extends javax.swing.JFrame {
     
     Query query = new Query();
 
     /**
      * Creates new form FindFitment
      */
-    public FindFitment() {
+    public FindSize() {
         initComponents();
     }
 
@@ -37,9 +37,9 @@ public class FindFitment extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane = new javax.swing.JTextPane();
 
-        setTitle("Buscar Muebles");
+        setTitle("Buscar Tamaños");
 
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modelo", "Nombre", "Precio", "Paquetes" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Ancho", "Fondo", "Altura", "Peso Balda", "Mueble" }));
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +86,7 @@ public class FindFitment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        jTextPane.setText(query.findFitment(jComboBox.getSelectedIndex(), jText.getText()));
+        jTextPane.setText(query.findSize(jComboBox.getSelectedIndex(), jText.getText()));
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**
@@ -106,20 +106,21 @@ public class FindFitment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FindFitment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FindSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FindFitment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FindSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FindFitment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FindSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FindFitment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FindSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FindFitment().setVisible(true);
+                new FindSize().setVisible(true);
             }
         });
     }

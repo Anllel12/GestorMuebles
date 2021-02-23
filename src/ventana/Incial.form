@@ -76,6 +76,8 @@
                               <Component id="jButtonEliminarMuebles" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonEditarMuebles" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonBuscarMuebles" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonAnadirMuebles" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -94,6 +96,7 @@
                           <Component id="jButtonAnadirMuebles" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEliminarMuebles" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEditarMuebles" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jButtonBuscarMuebles" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -164,6 +167,14 @@
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="jButtonBuscarMuebles">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarMueblesActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JInternalFrame" name="jInternalFrame2">
@@ -189,6 +200,8 @@
                               <Component id="jButtonEliminarTamano" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonEditarTamano" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonBuscarTamano" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonAnadirTamano" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -207,6 +220,7 @@
                           <Component id="jButtonAnadirTamano" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEliminarTamano" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEditarTamano" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jButtonBuscarTamano" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -289,6 +303,11 @@
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="jButtonBuscarTamano">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JInternalFrame" name="jInternalFrame3">
@@ -314,6 +333,8 @@
                               <Component id="jButtonEliminarMateriales" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonEditarMateriales" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonBuscarMateriales" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonAnadirMateriales" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -332,6 +353,7 @@
                           <Component id="jButtonAnadirMateriales" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEliminarMateriales" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jButtonEditarMateriales" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jButtonBuscarMateriales" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -400,6 +422,11 @@
             <Component class="javax.swing.JButton" name="jButtonEditarMateriales">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonBuscarMateriales">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
             </Component>
           </SubComponents>

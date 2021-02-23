@@ -14,6 +14,8 @@ public class Incial extends javax.swing.JFrame {
     
     CreateBBDD dataBase = new CreateBBDD();
     Query query = new Query();
+    
+    FindFitment findFitment = new FindFitment();
 
     /**
      * Creates new form Incial
@@ -42,18 +44,21 @@ public class Incial extends javax.swing.JFrame {
         jButtonAnadirMuebles = new javax.swing.JButton();
         jButtonEliminarMuebles = new javax.swing.JButton();
         jButtonEditarMuebles = new javax.swing.JButton();
+        jButtonBuscarMuebles = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTamanos = new javax.swing.JTable();
         jButtonAnadirTamano = new javax.swing.JButton();
         jButtonEliminarTamano = new javax.swing.JButton();
         jButtonEditarTamano = new javax.swing.JButton();
+        jButtonBuscarTamano = new javax.swing.JButton();
         jInternalFrame3 = new javax.swing.JInternalFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableMateriales = new javax.swing.JTable();
         jButtonAnadirMateriales = new javax.swing.JButton();
         jButtonEliminarMateriales = new javax.swing.JButton();
         jButtonEditarMateriales = new javax.swing.JButton();
+        jButtonBuscarMateriales = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -88,6 +93,13 @@ public class Incial extends javax.swing.JFrame {
 
         jButtonEditarMuebles.setText("Editar");
 
+        jButtonBuscarMuebles.setText("Buscar");
+        jButtonBuscarMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarMueblesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -100,6 +112,8 @@ public class Incial extends javax.swing.JFrame {
                         .addComponent(jButtonEliminarMuebles)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEditarMuebles)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBuscarMuebles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAnadirMuebles)))
                 .addContainerGap())
@@ -113,7 +127,8 @@ public class Incial extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnadirMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEliminarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonEditarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -145,6 +160,8 @@ public class Incial extends javax.swing.JFrame {
 
         jButtonEditarTamano.setText("Editar");
 
+        jButtonBuscarTamano.setText("Buscar");
+
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
         jInternalFrame2Layout.setHorizontalGroup(
@@ -157,6 +174,8 @@ public class Incial extends javax.swing.JFrame {
                         .addComponent(jButtonEliminarTamano)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEditarTamano)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBuscarTamano)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAnadirTamano)))
                 .addContainerGap())
@@ -170,7 +189,8 @@ public class Incial extends javax.swing.JFrame {
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnadirTamano, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEliminarTamano, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditarTamano, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonEditarTamano, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscarTamano, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -202,6 +222,8 @@ public class Incial extends javax.swing.JFrame {
 
         jButtonEditarMateriales.setText("Editar");
 
+        jButtonBuscarMateriales.setText("Buscar");
+
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
         jInternalFrame3Layout.setHorizontalGroup(
@@ -214,6 +236,8 @@ public class Incial extends javax.swing.JFrame {
                         .addComponent(jButtonEliminarMateriales)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEditarMateriales)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBuscarMateriales)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAnadirMateriales)))
                 .addContainerGap())
@@ -227,7 +251,8 @@ public class Incial extends javax.swing.JFrame {
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnadirMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEliminarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonEditarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -258,6 +283,10 @@ public class Incial extends javax.swing.JFrame {
         this.dispose();
         Runtime.getRuntime().halt(0);
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonBuscarMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMueblesActionPerformed
+        findFitment.setVisible(true);
+    }//GEN-LAST:event_jButtonBuscarMueblesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,6 +327,9 @@ public class Incial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAnadirMateriales;
     private javax.swing.JButton jButtonAnadirMuebles;
     private javax.swing.JButton jButtonAnadirTamano;
+    private javax.swing.JButton jButtonBuscarMateriales;
+    private javax.swing.JButton jButtonBuscarMuebles;
+    private javax.swing.JButton jButtonBuscarTamano;
     private javax.swing.JButton jButtonEditarMateriales;
     private javax.swing.JButton jButtonEditarMuebles;
     private javax.swing.JButton jButtonEditarTamano;

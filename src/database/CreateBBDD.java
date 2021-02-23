@@ -6,6 +6,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -30,8 +31,10 @@ public class CreateBBDD {
             createDataBase(name); // creao la base.
             
             createTables(); // creo las tablas.
-            
-            insertTables(); // inserto datos.
+           
+            if(isEmpty() <= 0){
+                insertTables(); // inserto datos.
+            }
            
         } catch (SQLException ex) {
             Logger.getLogger(CreateBBDD.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +89,7 @@ public class CreateBBDD {
         
         stmt.executeUpdate(tamañoTable);
         
-        String materialesTable = "CREATE TABLE IF NOT EXISTS `materiales` (\n" + // creación de Materiales.
+        String materialesTable = "CREATE TABLE IF NOT EXISTS `material` (\n" + // creación de Materiales.
         "`id` INT(10) AUTO_INCREMENT,\n" +
         "`principal` VARCHAR(100),\n" +
         "`secundario` VARCHAR(100),\n" +
@@ -99,7 +102,7 @@ public class CreateBBDD {
         stmt.close();
     }
      
-     private static void insertTables() throws SQLException {  // insertamos valores a las diferentes tablas.
+    private static void insertTables() throws SQLException {  // insertamos valores a las diferentes tablas.
         Statement stmt = con.createStatement();
 
         String muebleTable = "INSERT IGNORE INTO `mueble` VALUES \n" + // inserto de datos de Mueble.
@@ -116,7 +119,7 @@ public class CreateBBDD {
         
         stmt.executeUpdate(tamañoTable);
         
-        String materialesTable = "INSERT IGNORE INTO `materiales` VALUES \n" + // inserto de datos de Materiales.
+        String materialesTable = "INSERT IGNORE INTO `material` VALUES \n" + // inserto de datos de Materiales.
         "(0, 'Acero galvanizado', 'Plástico amídico', '00278578'),\n" +
         "(0, 'Acero', 'Contrachapado de pino', '60333850'),\n" +
         "(0, 'Acero galvanizado', 'Revestimiento en polvo de poliéster', '30409295');";
@@ -124,5 +127,24 @@ public class CreateBBDD {
         stmt.executeUpdate(materialesTable);
                
         stmt.close();
+    }
+     
+    public static int isEmpty() throws SQLException {  // Comprueba si esta vacía la Base de Datos.            
+        int model = 0 ;
+        
+        Statement stmt = con.createStatement();
+        
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS muebles FROM mueble;");  // Le pedimos la cantidad de muebeles que hay.
+        
+        if (rs.next()) {
+            model = rs.getInt("muebles");
+        }else {
+            model = -1;
+        }
+
+        rs.close();
+        stmt.close();
+        
+        return model;
     }
 }

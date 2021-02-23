@@ -85,7 +85,7 @@ public class CreateBBDD {
         "`peso_balda` INT(10),\n" +
         "`mueble` INT(10) NOT NULL,\n" +
         "PRIMARY KEY (`id`),\n" +
-        "FOREIGN KEY(`mueble`) REFERENCES mueble(modelo) \n" +
+        "FOREIGN KEY(`mueble`) REFERENCES mueble(modelo) ON DELETE CASCADE \n" +
         ");";
         
         stmt.executeUpdate(tamañoTable);
@@ -96,7 +96,7 @@ public class CreateBBDD {
         "`secundario` VARCHAR(100),\n" +
         "`mueble` INT(10) NOT NULL,\n" +
         "PRIMARY KEY (`id`),\n" +
-        "FOREIGN KEY(`mueble`) REFERENCES mueble(modelo)\n" +
+        "FOREIGN KEY(`mueble`) REFERENCES mueble(modelo) ON DELETE CASCADE \n" +
         ");";
         
         stmt.executeUpdate(materialesTable);

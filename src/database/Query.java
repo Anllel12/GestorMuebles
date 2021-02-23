@@ -174,4 +174,105 @@ public class Query {
         
         return text;
     }
+
+    public void addFitment(int modelo, String nombre, int precio, int paquetes) {
+        String query = "INSERT INTO mueble(modelo,nombre,precio,paquetes) VALUES (?, ?, ?, ?);";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, modelo);
+            stmt.setString(2, nombre);
+            stmt.setInt(3, precio);
+            stmt.setInt(4, paquetes);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void addSize(int ancho, int fondo, int altura, int pesoBalda, int mueble) {
+        String query = "INSERT INTO tamano(id,ancho,fondo,altura,peso_balda,mueble) VALUES (?, ?, ?, ?, ?, ?);";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, 0);
+            stmt.setInt(2, ancho);
+            stmt.setInt(3, fondo);
+            stmt.setInt(4, altura);
+            stmt.setInt(5, pesoBalda);
+            stmt.setInt(6, mueble);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void addMaterial(String principal, String secundario, int mueble) {
+        String query = "INSERT INTO material(id,principal,secundario,mueble) VALUES (?, ?, ?, ?);";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, 0);
+            stmt.setString(2, principal);
+            stmt.setString(3, secundario);
+            stmt.setInt(4, mueble);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void deleteFitment(int model) {
+        String query = "DELETE FROM mueble WHERE modelo = ?";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, model);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void deleteSize(int id) {
+        String query = "DELETE FROM tamano WHERE id = ?";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void deleteMaterial(int id) {
+        String query = "DELETE FROM material WHERE id = ?";
+        
+        try{
+            PreparedStatement stmt = dataBase.con.prepareStatement(query);
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
 }

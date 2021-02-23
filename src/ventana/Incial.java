@@ -5,6 +5,8 @@ package ventana;
 
 import database.CreateBBDD;
 import database.Query;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +20,16 @@ public class Incial extends javax.swing.JFrame {
     FindFitment findFitment = new FindFitment();
     FindSize findSize = new FindSize();
     FindMaterial findMaterial = new FindMaterial();
+    
+    AddFitment addFitment = new AddFitment(this);
+    AddMaterial addMaterial = new AddMaterial(this);
+    AddSize addSize = new AddSize(this);
+    
+    int row = 0; // fila pinchada con el raton
+    int col = 0; // columna pinchada con el raton
+    String edit = ""; // valor que edito
+    int edit2 = 0;
+    int id = 0; // valor que edito
 
     /**
      * Creates new form Incial
@@ -88,13 +100,33 @@ public class Incial extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableMuebles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMueblesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMuebles);
 
         jButtonAnadirMuebles.setText("Añadir");
+        jButtonAnadirMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnadirMueblesActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarMuebles.setText("Eliminar");
+        jButtonEliminarMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarMueblesActionPerformed(evt);
+            }
+        });
 
         jButtonEditarMuebles.setText("Editar");
+        jButtonEditarMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarMueblesActionPerformed(evt);
+            }
+        });
 
         jButtonBuscarMuebles.setText("Buscar");
         jButtonBuscarMuebles.addActionListener(new java.awt.event.ActionListener() {
@@ -155,13 +187,33 @@ public class Incial extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableTamanos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTamanosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableTamanos);
 
         jButtonAnadirTamano.setText("Añadir");
+        jButtonAnadirTamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnadirTamanoActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarTamano.setText("Eliminar");
+        jButtonEliminarTamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarTamanoActionPerformed(evt);
+            }
+        });
 
         jButtonEditarTamano.setText("Editar");
+        jButtonEditarTamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarTamanoActionPerformed(evt);
+            }
+        });
 
         jButtonBuscarTamano.setText("Buscar");
         jButtonBuscarTamano.addActionListener(new java.awt.event.ActionListener() {
@@ -222,13 +274,33 @@ public class Incial extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableMateriales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMaterialesMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableMateriales);
 
         jButtonAnadirMateriales.setText("Añadir");
+        jButtonAnadirMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnadirMaterialesActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarMateriales.setText("Eliminar");
+        jButtonEliminarMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarMaterialesActionPerformed(evt);
+            }
+        });
 
         jButtonEditarMateriales.setText("Editar");
+        jButtonEditarMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarMaterialesActionPerformed(evt);
+            }
+        });
 
         jButtonBuscarMateriales.setText("Buscar");
         jButtonBuscarMateriales.addActionListener(new java.awt.event.ActionListener() {
@@ -309,6 +381,87 @@ public class Incial extends javax.swing.JFrame {
         findMaterial.setVisible(true);
     }//GEN-LAST:event_jButtonBuscarMaterialesActionPerformed
 
+    private void jButtonAnadirMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirMueblesActionPerformed
+        addFitment.setVisible(true);
+    }//GEN-LAST:event_jButtonAnadirMueblesActionPerformed
+
+    private void jButtonAnadirTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirTamanoActionPerformed
+        addSize.setVisible(true);
+    }//GEN-LAST:event_jButtonAnadirTamanoActionPerformed
+
+    private void jButtonAnadirMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirMaterialesActionPerformed
+       addMaterial.setVisible(true);
+    }//GEN-LAST:event_jButtonAnadirMaterialesActionPerformed
+
+    private void jButtonEliminarMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMueblesActionPerformed
+        query.deleteFitment(id);
+
+        updateTableFitment(); // actualizo los valores de la tabla
+    }//GEN-LAST:event_jButtonEliminarMueblesActionPerformed
+
+    private void jButtonEliminarTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarTamanoActionPerformed
+        query.deleteSize(id);
+
+        updateTableSize(); // actualizo los valores de la tabla
+    }//GEN-LAST:event_jButtonEliminarTamanoActionPerformed
+
+    private void jButtonEliminarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMaterialesActionPerformed
+        query.deleteMaterial(id);
+
+        updateTableMaterial(); // actualizo los valores de la tabla
+    }//GEN-LAST:event_jButtonEliminarMaterialesActionPerformed
+
+    private void jButtonEditarMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMueblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarMueblesActionPerformed
+
+    private void jButtonEditarTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarTamanoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarTamanoActionPerformed
+
+    private void jButtonEditarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMaterialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarMaterialesActionPerformed
+
+    private void jTableMueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMueblesMouseClicked
+        JTable source = (JTable) evt.getSource();
+        row = source.rowAtPoint(evt.getPoint()); // me devuelve la fila pinchada
+        col = source.columnAtPoint(evt.getPoint());
+        id = (int) source.getModel().getValueAt(row, 0);
+    }//GEN-LAST:event_jTableMueblesMouseClicked
+
+    private void jTableTamanosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTamanosMouseClicked
+        JTable source = (JTable) evt.getSource();
+        row = source.rowAtPoint(evt.getPoint()); // me devuelve la fila pinchada
+        col = source.columnAtPoint(evt.getPoint());
+        id = (int) source.getModel().getValueAt(row, 0);
+    }//GEN-LAST:event_jTableTamanosMouseClicked
+
+    private void jTableMaterialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMaterialesMouseClicked
+        JTable source = (JTable) evt.getSource();
+        row = source.rowAtPoint(evt.getPoint()); // me devuelve la fila pinchada
+        col = source.columnAtPoint(evt.getPoint());
+        id = (int) source.getModel().getValueAt(row, 0);
+    }//GEN-LAST:event_jTableMaterialesMouseClicked
+    
+    public void updateTableFitment(){ // actualizo la tabla
+        while(jTableMuebles.getRowCount() != 0) ((DefaultTableModel)jTableMuebles.getModel()).removeRow(0); // consigue el total de columnas y las elimina
+        
+        query.tableFitment(jTableMuebles);
+    }
+
+    public void updateTableSize(){
+        while(jTableTamanos.getRowCount() != 0) ((DefaultTableModel)jTableTamanos.getModel()).removeRow(0); // consigue el total de columnas y las elimina
+        
+        query.tableSize(jTableTamanos);
+    }
+    
+    public void updateTableMaterial(){
+        while(jTableMateriales.getRowCount() != 0) ((DefaultTableModel)jTableMateriales.getModel()).removeRow(0); // consigue el total de columnas y las elimina
+        
+        query.tableMaterial(jTableMateriales);
+    }
+    
     /**
      * @param args the command line arguments
      */

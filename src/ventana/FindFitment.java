@@ -84,10 +84,6 @@ public class FindFitment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        if(jComboBox.getSelectedIndex() != 1){
-            
-        }
-        System.out.println(jComboBox.getSelectedIndex());
         //jTextPane.setText(query.findFitment(jComboBox.getSelectedIndex(), jText.getText()));
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 

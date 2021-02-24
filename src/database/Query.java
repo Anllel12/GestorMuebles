@@ -175,7 +175,7 @@ public class Query {
         return text;
     }
 
-    public void addFitment(int modelo, String nombre, int precio, int paquetes) {
+    public void addFitment(int modelo, String nombre, int precio, int paquetes) { // añado tuplas en las tablas
         String query = "INSERT INTO mueble(modelo,nombre,precio,paquetes) VALUES (?, ?, ?, ?);";
         
         try{
@@ -193,7 +193,7 @@ public class Query {
         }
     }
 
-    public void addSize(int ancho, int fondo, int altura, int pesoBalda, int mueble) {
+    public void addSize(int ancho, int fondo, int altura, int pesoBalda, int mueble) { // añado tuplas en las tablas
         String query = "INSERT INTO tamano(id,ancho,fondo,altura,peso_balda,mueble) VALUES (?, ?, ?, ?, ?, ?);";
         
         try{
@@ -213,7 +213,7 @@ public class Query {
         }
     }
 
-    public void addMaterial(String principal, String secundario, int mueble) {
+    public void addMaterial(String principal, String secundario, int mueble) { // añado tuplas en las tablas
         String query = "INSERT INTO material(id,principal,secundario,mueble) VALUES (?, ?, ?, ?);";
         
         try{
@@ -231,7 +231,7 @@ public class Query {
         }
     }
 
-    public void deleteFitment(int model) {
+    public void deleteFitment(int model) { // elimino una tupla de la tabla
         String query = "DELETE FROM mueble WHERE modelo = ?";
         
         try{
@@ -246,7 +246,7 @@ public class Query {
         }
     }
 
-    public void deleteSize(int id) {
+    public void deleteSize(int id) { // elimino una tupla de la tabla
         String query = "DELETE FROM tamano WHERE id = ?";
         
         try{
@@ -261,7 +261,7 @@ public class Query {
         }
     }
 
-    public void deleteMaterial(int id) {
+    public void deleteMaterial(int id) { // elimino una tupla de la tabla
         String query = "DELETE FROM material WHERE id = ?";
         
         try{
@@ -269,6 +269,65 @@ public class Query {
             stmt.setInt(1, id);
             
             stmt.executeUpdate();
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void updateFitment(int col, String edit, int edit2, int model) {
+        String query = "";
+        
+        try{
+            Statement stmt = dataBase.con.createStatement();
+            switch(col){ // segun el numero de la columna hace una cosa u otra
+                case 1: query = String.format("UPDATE mueble SET nombre = '%s' WHERE modelo = %s", edit, model); break;
+                case 2: query = String.format("UPDATE mueble SET precio = '%s' WHERE modelo = %s", edit2, model); break;
+                case 3: query = String.format("UPDATE mueble SET paquetes = %s WHERE modelo = %s", edit2, model); break;
+            }        
+            
+            stmt.executeUpdate(query);
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void updateSize(int col, int edit2, int id) {
+       String query = "";
+        
+        try{
+            Statement stmt = dataBase.con.createStatement();
+            switch(col){ // segun el numero de la columna hace una cosa u otra
+                case 1: query = String.format("UPDATE tamano SET ancho = '%s' WHERE id = %s", edit2, id); break;
+                case 2: query = String.format("UPDATE tamano SET fondo = '%s' WHERE id = %s", edit2, id); break;
+                case 3: query = String.format("UPDATE tamano SET altura = %s WHERE id = %s", edit2, id); break;
+                case 4: query = String.format("UPDATE tamano SET peso_balda = '%s' WHERE id = %s", edit2, id); break;
+                case 5: query = String.format("UPDATE tamano SET mueble = %s WHERE id = %s", edit2, id); break;
+            }        
+            
+            stmt.executeUpdate(query);
+            stmt.close();
+        }
+        catch (SQLException ex){
+            System.out.println(ex.toString());
+        }
+    }
+
+    public void updateMaterial(int col, String edit, int edit2, int id) {
+        String query = "";
+        
+        try{
+            Statement stmt = dataBase.con.createStatement();
+            switch(col){ // segun el numero de la columna hace una cosa u otra
+                case 1: query = String.format("UPDATE material SET principal = '%s' WHERE id = %s", edit, id); break;
+                case 2: query = String.format("UPDATE material SET secundario = '%s' WHERE id = %s", edit, id); break;
+                case 3: query = String.format("UPDATE material SET mueble = %s WHERE id = %s", edit2, id); break;
+            }        
+            
+            stmt.executeUpdate(query);
             stmt.close();
         }
         catch (SQLException ex){

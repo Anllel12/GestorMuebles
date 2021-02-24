@@ -5,6 +5,7 @@ package ventana;
 
 import database.CreateBBDD;
 import database.Query;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,14 +15,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Incial extends javax.swing.JFrame {
     
-    CreateBBDD dataBase = new CreateBBDD();
+    CreateBBDD dataBase = new CreateBBDD(); // clases con codigo
     Query query = new Query();
     
-    FindFitment findFitment = new FindFitment();
+    FindFitment findFitment = new FindFitment(); // ventanas de Buscar
     FindSize findSize = new FindSize();
     FindMaterial findMaterial = new FindMaterial();
     
-    AddFitment addFitment = new AddFitment(this);
+    AddFitment addFitment = new AddFitment(this); // ventanas de Añadir
     AddMaterial addMaterial = new AddMaterial(this);
     AddSize addSize = new AddSize(this);
     
@@ -37,7 +38,7 @@ public class Incial extends javax.swing.JFrame {
     public Incial() {
         initComponents();
         dataBase.connect("muebles");
-        query.tableFitment(jTableMuebles);
+        query.tableFitment(jTableMuebles); // pongo os valores en las tablas
         query.tableSize(jTableTamanos);
         query.tableMaterial(jTableMateriales);
     }
@@ -93,7 +94,7 @@ public class Incial extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -412,15 +413,51 @@ public class Incial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEliminarMaterialesActionPerformed
 
     private void jButtonEditarMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMueblesActionPerformed
-        // TODO add your handling code here:
+        if(jTableMuebles.isEditing()){ // comprueba si esta editando la tabla
+            JOptionPane.showMessageDialog(null, "Deje de editar el campo (Pulse ENTER para dejar de editar).", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            if(col == 1){
+                edit = (String) ((DefaultTableModel)jTableMuebles.getModel()).getValueAt(row, col);//cojo el valor editado
+                query.updateFitment(col, edit, edit2, id); // paso los valores a la otra funcion
+            }
+            else{
+                edit2 = (int) Integer.parseInt((String) ((DefaultTableModel)jTableMuebles.getModel()).getValueAt(row, col));//cojo el valor editado
+                query.updateFitment(col, edit, edit2, id); // paso los valores a la otra funcion
+            }
+        }
+
+        updateTableFitment(); // actualizo los valores de la tabla
     }//GEN-LAST:event_jButtonEditarMueblesActionPerformed
 
     private void jButtonEditarTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarTamanoActionPerformed
-        // TODO add your handling code here:
+        if(jTableTamanos.isEditing()){ // comprueba si esta editando la tabla
+            JOptionPane.showMessageDialog(null, "Deje de editar el campo (Pulse ENTER para dejar de editar).", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{          
+            edit2 = (int) Integer.parseInt((String) ((DefaultTableModel)jTableTamanos.getModel()).getValueAt(row, col));//cojo el valor editado
+            query.updateSize(col, edit2, id); // paso los valores a la otra funcion
+        }
+
+        updateTableFitment(); // actualizo los valores de la tabla
     }//GEN-LAST:event_jButtonEditarTamanoActionPerformed
 
     private void jButtonEditarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMaterialesActionPerformed
-        // TODO add your handling code here:
+        if(jTableMateriales.isEditing()){ // comprueba si esta editando la tabla
+            JOptionPane.showMessageDialog(null, "Deje de editar el campo (Pulse ENTER para dejar de editar).", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            if(col == 1 || col == 2){
+                edit = (String) ((DefaultTableModel)jTableMateriales.getModel()).getValueAt(row, col);//cojo el valor editado
+                query.updateMaterial(col, edit, edit2, id); // paso los valores a la otra funcion
+            }
+            else{
+                edit2 = (int) Integer.parseInt((String) ((DefaultTableModel)jTableMateriales.getModel()).getValueAt(row, col));//cojo el valor editado
+                query.updateMaterial(col, edit, edit2, id); // paso los valores a la otra funcion
+            }
+        }
+
+        updateTableFitment(); // actualizo los valores de la tabla
     }//GEN-LAST:event_jButtonEditarMaterialesActionPerformed
 
     private void jTableMueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMueblesMouseClicked
@@ -450,13 +487,13 @@ public class Incial extends javax.swing.JFrame {
         query.tableFitment(jTableMuebles);
     }
 
-    public void updateTableSize(){
+    public void updateTableSize(){ // actualizo la tabla
         while(jTableTamanos.getRowCount() != 0) ((DefaultTableModel)jTableTamanos.getModel()).removeRow(0); // consigue el total de columnas y las elimina
         
         query.tableSize(jTableTamanos);
     }
     
-    public void updateTableMaterial(){
+    public void updateTableMaterial(){ // actualizo la tabla
         while(jTableMateriales.getRowCount() != 0) ((DefaultTableModel)jTableMateriales.getModel()).removeRow(0); // consigue el total de columnas y las elimina
         
         query.tableMaterial(jTableMateriales);

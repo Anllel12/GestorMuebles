@@ -11,10 +11,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author angel
+ * @author Angel Esquinas
  */
 public class CreateBBDD {
     
@@ -37,7 +38,7 @@ public class CreateBBDD {
             }
            
         } catch (SQLException ex) {
-            Logger.getLogger(CreateBBDD.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No es posible conectarse a la Base de Datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -131,12 +132,12 @@ public class CreateBBDD {
         stmt.close();
     }
      
-    public static int isEmpty() throws SQLException {  // Comprueba si esta vacía la Base de Datos.            
+    public static int isEmpty() throws SQLException {  // comprueba si esta vacía la Base de Datos.            
         int model = 0 ;
         
         Statement stmt = con.createStatement();
         
-        ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS muebles FROM mueble;");  // Le pedimos la cantidad de muebeles que hay.
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS muebles FROM mueble;");  // le pedimos la cantidad de muebles que hay.
         
         if (rs.next()) {
             model = rs.getInt("muebles");

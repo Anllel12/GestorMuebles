@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Form para buscar valores de la Tabla Material
  */
 package ventana;
 
@@ -9,7 +7,7 @@ import database.Query;
 
 /**
  *
- * @author angel
+ * @author Angel Esquinas
  */
 public class FindMaterial extends javax.swing.JFrame {
     
@@ -86,7 +84,7 @@ public class FindMaterial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        jTextPane.setText(query.findMaterial(jComboBox.getSelectedIndex(), jText.getText()));
+        jTextPane.setText(query.findMaterial(jComboBox.getSelectedIndex(), jText.getText())); // hace la query y lo pone el en panel
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**

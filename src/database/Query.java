@@ -7,12 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author angel
+ * @author Angel Esquinas
  */
 public class Query {
     
@@ -35,7 +36,7 @@ public class Query {
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido mostrar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }        
     }
     
@@ -57,7 +58,7 @@ public class Query {
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido mostrar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }        
     }
     
@@ -79,7 +80,7 @@ public class Query {
             stmt.close();
         }
         catch(SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido mostrar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }        
     }
 
@@ -107,7 +108,7 @@ public class Query {
             stmt.close();          
         }
         catch (Exception ex){
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido realizar la busqueda.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } 
         
         return text;
@@ -139,7 +140,7 @@ public class Query {
             stmt.close();          
         }
         catch (Exception ex){
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido realizar la busqueda.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } 
         
         return text;
@@ -169,7 +170,7 @@ public class Query {
             stmt.close();          
         }
         catch (Exception ex){
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(null, "No se ha podido realizar la busqueda.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } 
         
         return text;
@@ -189,7 +190,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido añadir los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -209,7 +210,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido añadir los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -227,7 +228,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido añadir los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -242,7 +243,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido eliminar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -257,7 +258,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido eliminar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -272,7 +273,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido eliminar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -291,7 +292,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -312,7 +313,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -331,7 +332,7 @@ public class Query {
             stmt.close();
         }
         catch (SQLException ex){
-            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(null, "No se ha podido actualizar los datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

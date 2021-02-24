@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author angel
+ * @author Angel Esquinas
  */
 public class Incial extends javax.swing.JFrame {
     
@@ -398,6 +398,8 @@ public class Incial extends javax.swing.JFrame {
         query.deleteFitment(id);
 
         updateTableFitment(); // actualizo los valores de la tabla
+        updateTableSize(); // actualizo esta tabla por el ON DELETE CASCADE
+        updateTableMaterial();
     }//GEN-LAST:event_jButtonEliminarMueblesActionPerformed
 
     private void jButtonEliminarTamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarTamanoActionPerformed
